@@ -22,7 +22,7 @@ const loadingScreen = document.getElementById("loader-page")
 
 setTimeout(() => {
   loadingScreen.classList.add("visible")
-}, 1000);
+}, 4000);
 
 //date
 const date = new Date()
