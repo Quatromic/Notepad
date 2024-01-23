@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Notepad</title>
+</head>
+<body>
+    <!--Loading Screen-->
+    <div id="loader-page">
+        <div id="loader"></div>
+        <div id="Quote">
+            <p id="quote"></p>
+            <p id="author"></p>
+        </div>
+    </div>
+    <!--Notes-->
+    <main>
+        <!--Navbar-->
+        <section>
+            <nav>
+                <header>
+                    <h1>Inclyne Notes</h1>
+                </header>
+                <p id="date">Date</p>
+                <ul>
+                    <li><a id="createbtn" href="#">Create new Note</a></li>
+                </ul>
+            </nav>
+        </section>
+        <!--Note display-->
+        <section id="notepad">
+            <div id="note">
+
+            </div>
+        </section>
+        <section>
+            <div id="create">
+                <h3>Create Note</h3>
+                <div id="details">
+                    <p id="exit">X</p>
+                    <input id="title" name="title" placeholder="title">
+                    <br>
+                    <input id="Aauthor" name="author" placeholder="author">
+                    <br>
+                    <textarea id="body" max-height="100px" placeholder="Body"></textarea>
+                    <br>
+                    <button id="submitbtn" type="submit">Take Note</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

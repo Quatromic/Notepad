@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Lobster+Two&family=Noto+Sans:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@200&display=swap');
+*{
+    margin:0;
+}
+body{
+    background:linear-gradient(to bottom right,#ebf4f5,#b5c6e0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+/*Loading page*/
+#loader-page{
+    width:100%;
+    height:100vh;
+    background:linear-gradient(#ebf4f5,#b5c6e0);
+}
+#loader-page.visible{
+    position: absolute;
+    transform:translate3d(1000px,0,0);
+    opacity: 0;
+    transition:transform .5s ease-in-out,opacity .5s ease-in-out;
+}
+#loader{
+    width:100px;
+    height:100px;
+    border:1px solid black;
+    border-top:0px;
+    border-bottom:0px;
+    border-radius:50%;
+    margin:0 auto;
+    position:relative;
+    top:300px;
+    animation-name:spin;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+#Quote{
+    width:250px;
+    height:100px;
+    margin:0 auto;
+    position: relative;
+    top:350px;
+    text-align:center;
+    line-height: 25px;
+    border-bottom:1px solid grey;
+}
+#Quote p:first-child{
+    font-family:"Noto Sans",sans-serif;
+}
+#Quote p:last-child{
+    font-family:"Lobster Two",sans-serif;
+    color:grey;
+}
+
+/*Navigation Bar*/
+nav{
+    display:flex;
+    padding:10px;
+    position: relative;
+    top:30px;
+    left:200px;
+    border-bottom: 1px solid rgb(56, 50, 50);
+    width:70%;
+    justify-content: space-between;
+}
+nav p{
+    margin-left:5px;
+    margin-top:7px;
+    font-family:"lobster",sans-serif;
+    color:black;
+    text-decoration: underline;
+}
+nav header h1{
+    font-family:"Lobster two",sans-serif;
+    font-weight: lighter;
+    font-size:23px;
+    text-decoration:underline;
+}
+nav ul{
+    list-style: none;
+}
+nav ul li a{
+    color:black;
+    text-decoration:none;
+    position:relative;
+    top:7px;
+    font-family:"Noto Sans",sans-serif;
+}
+nav ul li a::after{
+    content:'';
+    width:100%;
+    height:1px;
+    background-color: black;
+    position:absolute;
+    bottom:0;
+    left:0;
+    transform-origin:bottom right;
+    transform: scale(0);
+    transition:transform 1s ease-in-out;
+}
+nav ul li a:hover::after{
+    transform-origin:bottom left;
+    transform: scale(1);
+}
+
+/*Notepad*/
+#notepad{
+    position: relative;
+    top:100px;
+    left:200px;
+    width:70.5%;
+    height:auto;
+    margin:8px;
+
+}
+#create{
+    width:550px;
+    height:250px;
+    margin:0 auto;
+    position:absolute;
+    top:300px;
+    left:430px;
+    border-bottom:1px solid black;
+    background-color: rgb(240,240,240);
+    border-radius: 25px;
+    padding:10px;
+    transform:translate3d(250px,0,0);
+    opacity:0;
+    transition:transform .5s ease-in-out,opacity .5s ease-in-out;
+}
+#create.visible{
+    transform:translate3d(0,0,0);
+    opacity: 1;
+}
+#create h3{
+    text-align:center;
+    text-decoration:underline;
+    font-size:23px;
+    font-family:"Oswald",sans-serif;
+    font-weight:lighter;
+}
+#details{
+    text-align: center;
+    margin-top:20px;
+    line-height: 45px;
+}
+#details input[placeholder]{
+    text-align: left;
+    padding-left: 25px;
+}
+#details input{
+    background:transparent;
+    border:none;
+    text-align: center;
+    font-family:"Dancing Script",sans-serif;
+    border-bottom: 1px solid black;
+    font-size:19px;
+}
+#body{
+    border:none;
+    border-bottom:1px solid black;
+    background: transparent;
+    font-family: "Dancing Script";
+    max-height: 50px;
+}
+#body::placeholder{
+    text-align:center;
+    font-size:19px;
+    font-family: "Dancing Script",sans-serif;
+}
+#details button{
+    width:25%;
+    border:none;
+    background:transparent;
+    font-family:"Noto Sans",sans-serif;
+    font-size:16px;
+}
+#details button::after{
+    content:'';
+    width:20%;
+    height:1px;
+    background-color: black;
+    position:absolute;
+    bottom:28px;
+    left:225px;
+    transform-origin:bottom right;
+    transform: scale(0);
+    transition:transform .5s ease-in-out;
+}
+#details button:hover::after{
+    transform: scale(1);
+    transform-origin:bottom left;
+}
+#details button:hover{
+    cursor: pointer;
+}
+#exit{
+    position:absolute;
+    font-family:"Open Sans";
+    top:0;
+    right:20px;
+}
+#exit:hover{
+    cursor: pointer;
+}
+#notepad{
+    transition:filter 1s ease-in-out;
+}
+#notepad [id*="Note"]{
+    border-bottom:1px solid black;
+    margin-bottom:75px;
+    padding:20px;
+    border-radius:15px;
+    line-height: 25px;
+    transition:box-shadow .5s ease-in-out;
+    height:100px;
+}
+#notepad [id*="Note"]:hover{
+    box-shadow: 5px 5px 5px 5px rgb(255,255,255);
+}
+#notepad [id*="Note"] h1{
+    font-family:"Noto Sans",sans-serif;
+    font-weight:lighter;
+    text-decoration: underline;
+    margin-bottom:5px;
+}
+#notepad [id*="Note"] p:first-of-type{
+    font-family:"Lobster Two",sans-serif;
+    margin-left:45px;
+}
+#notepad [id*="Note"] p:last-of-type{
+    font-family:"Dancing Script",sans-serif;
+    margin-left:65px;
+}
+/*Editing btns e.g delete and edit*/
+#Btns{
+    width:300px;
+    position: absolute;
+    left:600px;
+    display: flex;
+    justify-content: space-evenly;
+}
+#Btns button{
+    background:transparent;
+    font-family:"Open Sans",sans-serif;
+    font-size:15px;
+    width:100px;
+    border:none;
+    transition:background-color .5s ease-in-out,color .5s ease-in-out,border-radius .5s ease-in-out;
+}
+#Btns button:hover{
+    background-color: grey;
+    color:white;
+    border-radius: 15px;
+    cursor: pointer;
+}

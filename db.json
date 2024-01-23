@@ -1,0 +1,22 @@
+{
+  "Notes": [
+    {
+      "title": "Note 1",
+      "body": "First ever note",
+      "author": "David Muchiri",
+      "id": 1
+    },
+    {
+      "id": "a925",
+      "title": "Json Files",
+      "author": "David Muchiri",
+      "body": "Json files are vey interesting to use and work with"
+    },
+    {
+      "id": "1152",
+      "title": "Ferdinando",
+      "body": "Football",
+      "author": "Rodrigo"
+    }
+  ]
+}
