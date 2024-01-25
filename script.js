@@ -10,7 +10,7 @@ const quoteFetcher =  async() => {fetch("https://type.fit/api/quotes")
   .then(function(data) {
     quoteTag.innerHTML = data[randomNumQuote].text
     author.innerHTML = data[randomNumQuote].author
-})}
+}).catch(error => console.log(error))}
 
 const caller = async () => {
   const Func1 = await quoteFetcher().then(() => console.log("Success")).catch(error => console.error(error))
@@ -22,7 +22,7 @@ const loadingScreen = document.getElementById("loader-page")
 
 setTimeout(() => {
   loadingScreen.classList.add("visible")
-}, 4000);
+}, 1000);
 
 //date
 const date = new Date()
@@ -93,7 +93,8 @@ submitbtn.onclick = (e) => {
   e.preventDefault()
     const title = String(document.getElementById("title").value),body = String(document.getElementById("body").value)
     const author = String(document.getElementById("Aauthor").value)
-    const details = {title,body,author}
+    let id = document.querySelectorAll("[id*=note]").length;id+=1
+    const details = {title,body,author,id}
     if(title.length > 0 && body.length > 0 && author.length > 0){
       fetch("http://localhost:8000/Notes",{
         method:"POST",
@@ -106,7 +107,6 @@ submitbtn.onclick = (e) => {
       })
     }
 }
-
 //Displaying the actual Notes
 var xhReq = new XMLHttpRequest();
 xhReq.open("GET","http://localhost:8000/Notes", false);
@@ -119,9 +119,41 @@ jsonObject.forEach((object,index,_) => {
     editbtn.innerText = "Edit",deletebtn.innerText = "Delete"
     editingDiv.id = "Btns"
     const editFunc = (e) => {
-      
+      const exitter = document.getElementById("exit1")
+      const editsubmitter = document.getElementById("editbtn")
+      const editTab = document.getElementById("edit")
+      editTab.classList.add("visible")
+
+      editsubmitter.onclick = () => {
+        
+        const newTitle = String(document.getElementById("titleEdit").value),newAuthor = String(document.getElementById("authorEdit").value),newBody = String(document.getElementById("bodyEdit").value)
+        if(newTitle.length > 0 && newAuthor.length > 0 && newBody.length > 0){
+          object.title = newTitle
+          object.author = newAuthor
+          object.body = newBody
+          
+          headTitle.innerText = object.title
+          authorTitle.innerText = object.author
+          bodyTitle.innerText = object.body
+          const newData = {
+            id:index,
+            title:newTitle,
+            author:newAuthor,
+            body:newBody
+          }
+          const Data ='./db.json'
+          fetch("http://localhost:8000/Notes/" + `${index}`,{
+            method:"PUT",
+            headers:{'Content-type':'Application/json'},
+            body:JSON.stringify(newData)
+          }).then(response => response).then(data => console.log(data)).catch(error => console.log(error))
+        }
+      }
+      exitter.onclick = () => {
+        editTab.classList.remove('visible')
+      }
     },deleteFunc = (e) => {
-      
+            
     }
     editbtn.addEventListener('click',(e) => editFunc(e))
     deletebtn.addEventListener('click',(e) => deleteFunc(e))
